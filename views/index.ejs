@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayfalama nasıl yapılır?</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    
+
+
+    <% result.forEach(element => { %>
+        <div class="area">
+            <h2>
+                <%= element.title %>
+            </h2>
+            <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <%= element.content %>
+            </p>
+        </div>
+    <% }) %>
+
+
+    <div class="pagination">
+        <ul>
+            <% if (nowPage == 1) { %>
+                <li class="active"><a href="?page=1">First</a></li>
+            <% } else { %>
+                <li class="default"><a href="?page=1">First</a></li>
+            <% } %>
+
+
+            <% if (i!=1) { %>
+                <li class="disable"><a>...</a></li>
+            <% } %>
+
+
+
+            <% for(; i <= nowPage+4 && i<=totalPage; i++ ) { %>
+            
+                <% if (i == nowPage) { %>
+                    
+                     <% if (i==1 || i == totalPage) { %>
+
+                     <% } else { %>
+                          <li class="active"><a href="?page=<%=i%>"><%=i%></a></li>
+                     <% } %>
+
+                <% } else { %>
+
+                      <% if (i==1 || i == totalPage) { %>
+
+                      <% } else { %>
+                          <li class="default"><a href="?page=<%=i%>"><%=i%></a></li>
+                      <% } %>
+
+                <% } %>
+
+
+
+
+                <% if (i==nowPage + 4 && i<totalPage) { %>
+                    <li class="disable"><a>...</a></li>
+                <% } %>
+
+            <% } %>
+
+
+
+
+            <% if (nowPage == totalPage) { %>
+                <li class="active"><a href="?page=<%=totalPage%>">Last</a></li>
+            <% } else { %>
+                <li class="default"><a href="?page=<%=totalPage%>">Last</a></li>
+            <% } %>
+
+        </ul>
+    </div>
+
+
+</body>
+</html>
